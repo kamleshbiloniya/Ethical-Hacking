@@ -1,0 +1,266 @@
+<DCTYPE html>
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+    
+ </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+         <h1>Ethical Hacking'17</h1>
+        </div>
+        <div class="col-md-6 text-left text-uppercase">
+          <h1 >hacker404</h1>
+          
+        </div>
+      </div>
+      <div class="row">
+	<div class="col-md-12">
+	  <ul class="disc">
+	     <li>Basic Linux and ssh login</li>
+	     <li>Introduction to Assembly Language </li>
+	     <li>Buffer Overflow and pwntools</li>
+	  </ul>
+	</div>
+      </div>
+      <div class="row">
+        <div>
+	  <h2>Basic Linux and ssh login</h2>
+	  <p class="c1">We started linux with wargame on overthewire in which we did bandit execises.From level0 to level 6 it was linux's basic commands (e.g. ls, cd, cat, file, du, find ,grep) and from level 7         to level 13 we learnt how to read text of any type of file using commnds grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd, mkdir, cp, mv.from level 14 we started introduce with ssh       login by using private key ,how to send text to port,how to use uid(command used:ssh, telnet, nc, openssl, s_client, nmap) till level 19.from level 20 to level we learnt how to use our python       file by cron .level 25 was very funny you can't get passwd for next level if size of you terminal is large .why?</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="c2">
+          <h2> Introduction to Assembly Language</h2>
+          <p class="c1">It was the first step towards hacking . It starts with introduction to system organization (introduction to cpu,memory).cpu are divided in three parts control unit,execution unit nd registers.registers are of four type general purpose,segment ,instructor pointer,control register.general purpose registers are very frequently used reg.these are rax,rbx,rcx,rdx,rsi,rdi,rsp and rbp  in memory part important thing is that "Every process is laid out in same virtual memoryspace - regardless of the actual physical memory locatin.</p>
+          <h3>Program memory</h3>
+        </div>
+      </div>
+          <div class ="row">
+            <div class="col-md-3">
+               <table class="tbl"> 
+                <tr><td>0XBFFFFFFF ------></td></tr>
+              </table>
+            </div>
+            <div class="col-md-2">
+             <table class="tbl"> 
+             <tr class="r1" ><td>Stack</td></tr>
+             <tr class="r2"><td>Unused memory</td></tr>
+             <tr class="r3"><td>heap</td></tr>
+             <tr class="r4"><td>.bss</td></tr>
+             <tr class="r5"><td>.data</td></tr>
+             <tr class="r6"><td>.text</td></tr>
+            </table>
+          </div>
+            <div class="col-md-7">
+              <p> <---- used for storing function arguments and local variable</p>
+              <br/><br/>
+              <p> <--- Dynamic memry-malloc()</p><br/>
+              <p> <---- Uninitialized data</p>
+              <p><---- Initialized data</p>
+              <p> <---- Program code</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="c1">stack is LIFO(last input first output).It grows down from high memory to low memory.rsp always points to top of the stack.to open a program in gdb run we have to create object file then link it and then run command gdb ./file .In gdb to examine memory use  x/ FMT ADDRESS e.g x/10xb(show me 10 unit x in byte at given address ). To print address of variable var use "print &var".use command s for step through the program </p><br/>
+              <p class="c1">To write a smple assembly program that simple exit we have to load registers with specific values e.g sys call no in rax which is 1 for exit call and 4 for write sys call .To write call we have to give argument like "size_t write( int fd,cont void *buf,size_t const)</p>
+              
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+                <h3>Structure of an assembly program</h3>
+                <p>.data --->all initialized data</p>
+                <p>.bss --->all unintialized data</p>
+                <p>.text --->program instruction</p>
+                <p>_start--->main routine</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+               <p>System calls are invoked by processes using software interrupt-INT $0x80</p>
+               <h4>how do we pass arguments to syscalls</h4>
+                <p>rax -sys call number</p>
+                <p>rbx-first argument</p>
+                <p>rcx-second argument</p>
+                <p>.....so on</p>
+              <h4>Very simple program which just exit</h4>
+              <p>.text</p>
+                <p>.globl _start</p>
+                <p>_start</p>
+              <div class="col-md-3">
+                <p id="c">movl $1 , %rax</p>
+                <p id="c">movl $0 , %rbx</p>
+                <p id="c">int $0x80</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Data Type In .DATA</h3>
+              <ul>
+                <li>.byte = 1 byte </li>
+                <li>.ascii = string</li>
+                <li>.asciz = Null terminated string</li>
+                <li>.int = 32 bit integer</li>
+                <li>.short = 16 bit integer</li>
+                <li>.float = Single precision floating point number</li>
+                <li>.double = double precision floating point number</li>
+                <p><strong> Space reserved at compile time</strong></p>
+              </ul>
+              <h3>Data Type in .BSS</h3>
+              <ul>
+              <li>.comm-declares common memory area</li>
+              <li>.lcomm-declares local common memory area</li>
+                <p><strong>Space created at Runtime</strong></p>
+              </ul>
+              <h3>Basic Instructions -MOVx</h3>
+              <ul>
+               <li>Mov is probably most frequently used instruction in assembly</li>
+                <li>Usages format: MOVx source ,destination</li>
+                <p> - movl = moves s 32 bit value </p>
+                <p> - movw= moves a 16 bit value</p>
+                <p> - movb = moves a 8 bit value</p>
+              </ul>
+              <h3>Moving data</h3>
+              <ol>
+               <li>Between Register</li>
+                <p>movl %eax ,%edx</p>
+                <li>Between Register and Memory</li>
+                <p>movl %eax, location</p>
+                <p>movl lacation ,%ebx</p>
+                <li>Immidiate value in Register</li>
+                <p>movl $10 ,%ebx</p>
+                <li>Immidiate value in memory </li>
+                <p>movb $10,location</p>
+                <li>moving data into indexed memory locatin</li>
+                <p>IntegerArray:</p>
+                <p>.int 10,20,30,40,50</p>
+                <p>selecting 3rd integer "30"</p>
+                <p>BaseAddress(offset,index,size)</p>
+                <p>IntegerArray (0,2,4)</p>
+                <p>movl %eax,IntegerArray(0,2,4)</p>
+              </ol>
+              <h3>Indirect Addressing using registers</h3>
+              <ul>
+                <li>Placing "$" sign before a lbel name => take the memory address of the variabel and not the value</li>
+                <li>movl $location ,%edi</li>
+                <li>movl $5,(%edi) => value "9" in memory locatin pointed to by edi</li>
+                 <li>movl $5,4(%edi) => value "9" in memory locatin pointed to by edi+4</li>
+                 <li>movl $5,-2(%edi) => value "9" in memory locatin pointed to by edi-2</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Program execution flow</h3>
+              <ol>
+                <li>JMP:</li>
+                <ul>
+                  <li>compaire it with GOTO:statement in c</li>
+                  <li>Syntex- jmp label</li>
+                  <li>Short, Near and Far jump possible</li>
+                </ul>
+                <li>Call:</li>
+                <ul>
+                  <li>just like calling a function in c </li>
+                  <li>Syntex- call location</li>
+                  <li>There is associated "RET" statement with every call</li>
+                  <li>Using "call" pushes the next instruction address in the stack</li>
+                </ul>
+              </ol>
+              <h3>Conditional Branching</h3>
+              <ul>
+               <li>In order to use conditonal jumps you must have an operation which sets EFLAGS register appropriately</li>
+                <li> In conditional jumps -only short and near jump are supported. Fa jump are not supported</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Functions in Assembly</h3>
+              <ul>
+                <li>Defining a function in Assembly:</li>
+                <ul><p>.type MyFunction,@function</p></ul>
+                <li>MyFunction</li>
+                <ul><p>code</p></ul>
+                <ul><p>code</p></ul>
+                <ul><p>ret</p></ul>
+                <li>Function is invoked using "call MyFunction"</li>
+                <li>passing argument to the function</li>
+                <ul> <p> -registers</p></ul>
+                <ul> <p> -Global memory location</p></ul>
+                <ul> <p> -stack</p></ul>
+                <li>Returning from a function</li>
+                <ul> <p> -registers</p></ul>
+                <ul> <p> -Global memory location</p></ul>
+              </ul>
+            </div>
+         </div>
+         <div class="row">
+           <div class="col-md-2">
+             <table>
+               <tr class="s1"><td></td></tr>
+               <tr class="s2"><td>20</td></tr>
+               <tr class="s3"><td>10</td></tr>
+               <tr class="s4"><td>RET</td></tr>
+               <tr class="s5"><td>EBP-old</td></tr>
+               <tr class="s6"><td>int c</td></tr>
+             </table>
+           </div>
+           <div class="col-md-4">
+             <p>High Memory</p><br/>
+             <p>Argument to AddMe()</p><br/><br/><br/>
+             <p> ------EBP-New </p><br/><br/>
+              <p>Low Memory</p>
+           </div>
+           <div class="col-md-6">
+             <table class="l">
+               <td>
+                 <p> int AddMe(int a,int b)</p>
+                 <p>{</p>
+                 <p>int c;</p>
+                 <p>c=a+b;</p>
+                 <p>return c;</p>
+                 <p>}</p>
+                 <p>main(){</p>
+                 <p>AddMe(10,20)</p>
+                 <p>print()</p>
+                 <p>return 0;</p>
+                 <p>}</p>
+               </td>
+             </table>
+           </div>
+         </div>
+         <div class="row">
+           <div class="col-md-12">
+             <p>Thats all in Assemly.TO check what you learn in assembly do ctf1</p>
+             <p>solutoin of all problem in ctf1 are <a href="/ctf1.html">here</a></p>
+           </div>
+        </div>
+         <div class="row">
+           <div class="col-md-12">
+              <h2>Buffer overflow</h2>
+             <ul>
+               <li><strong>Buffer:</strong>-A temporary spacec in memory used for hold data</li>
+               <li><strong>Buffer overflow:</strong>-Happens when data written to the buffer is larger then size of buffer and due to insufficient bount checking it overflows and overwrites adjacent memory location.</li>
+               <li> Simple vulnerable function:</li>
+               <p>GetInput(){</p>
+               <p>char buffer[8];</p>
+               <p>gets(buffer);</p>
+               <p>puts(buffer);</p>
+               <p>}</p>
+               <li><strong>Gets() does not check if input size is grater then  size of buffer</strong></li>
+                <li><p>solution of ctf2 is <a href="/ctf2.html">here</a></p></li>
+             </ul>
+            
+           </div>
+                  
+        </div>
+    </div>
+  </body>
+</html>
+

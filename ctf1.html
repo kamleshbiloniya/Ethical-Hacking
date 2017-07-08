@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#flag{background-color:black;
+		color:white;
+        text-align:center;
+}
+</style>
+</head>
+<body>
+<h1 style="text-align:center;">solution of CTF</h1>
+<div>
+<h2>problems</h2>
+<ol type="1">
+  <li>find_M3</li>
+  <li> Th1$_$h1T</li>
+  <li>R0X </li>
+   <li>s3cr3T1</li>
+</ol>
+<h3>Comman thing we will do in all the problem are-</h3>
+<p>>>Frist of all open file in gbd</p>
+<p> >> Disassemble main  </p>
+<p>>> Set break ponit at starting of main (let  at main+2) </p>
+<p>>>Run the program</p>
+
+<h3><u>1. find_M3:</u></h3>
+<p>Now observe the registers carefully.you will find some value are moving from one to another
+as we step through the program. you will see that when main+26 will execute , value 0x45 ('E') will goto into memory location pointed by <b>rbp-0xa0 </b>.after some steps on observe some part of memory strating from <b>rbp-0xa0 </b> you will find  some char . you can gess these as your flag and check it.yes this your flag.</p>
+<p><b>problem you may face while step through the program::</b>while step from main+20 to main+24 it may give arror as "progarm received singnal SIGSEGV .segmantation fault".solution is that delete previous break point frist and set another break point ant main+24.and run it . </p>
+
+<p id="flag">flag is Ea5Y_fl4g</p>
+<h3><u>2.Th1$_$h1T :</u></h3>
+<p>As we ran we got"Congrats!! You got the flag" .from this you may guess taht flag must be around this line.for that we observe gdb <b>edi </b>register before any put or printf call.on observing some memory from 0x400848(frist call to puts) we will find some charactor .you me guess these as your flag and check it.nice.....it's your flag. </p>
+<p><strong>note :</strong> you may face same problem  as you in previous one.solution is same</p>
+<p id="flag"> flag is m4Nd1R_w4h1_b4n4Y3ng3</p>
+
+<h3><u>3.ROX:</u></h3>
+<p> It's a little big hard problem among all four.observe the registers carefully till puts call .see memory address 0x4007a8(that load edi before  call) .you can see "What do I do?????"
+step through till scanf function call .before call function observe edi .you can notice strings like"%lld" it mean this program take long long int type inputs after then."Congrats the flag is the key you entered."keep it in mind don't think about it.next step though the programand notice every step carefully.you can conclude that this steps take xor of<b> 0xabbebabe</b> with input we entered and compare output of xor with<b> 0xdeadbeef</b> if result is not equal to zero program jumps.and print "Git gud n00b".but we want to print "Congrats the flag is the key you entered."
+ so that arount this statement we can find flag .for that we should give password such that after takeing xor with <b> 0xabbebabe</b> on comparison it give zero.for that you should conver <b> 0xdeadbeef</b> into binary .now play with binary .find required input such after
+ taking xor of it with <b> 0xabbebabe</b> it should  give <b>0xdeadbeef</b>.</p>
+<p id="flag"> flag is 1964180561</p>
+  
+
+<h3><u>4.s3cr3T1:</u></h3>
+<p>  It's simplest problem just use strings and get flag </p>
+<p>sytex to use "strings s3cr3T1" </p>
+<p id="flag"> flag is mY_f1R5t_h4cK</p>
+</div>
+<h3>other</h3>
+<a href="https://pclubiitk.slack.com/files/siddarth/F5JPH125S/task1.zip">click here to download problems</a><br>
+<a href="https://siddarthkrishnamoorthy.github.io/ethical-hacking-task1/">you can check your flag here</a>
+<p>summer-project@ethical hacking-17</p>
+<p>kamlesh kumar</p>
+<p>160317</p>
+</body>
+</html>
