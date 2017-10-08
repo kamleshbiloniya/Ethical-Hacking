@@ -1,8 +1,8 @@
 ---
-Title: "System and Cyber Security"
+Title: System and Cyber Security
 Date: 27-01-2017 to 15-4-17
 Members: Kamlesh K Biloniya, Divya chauhan, Chaman Agrawal, Kushagra Rajput
-Mentors: Siddarth Krishnamoorthy & Soumye Singhal
+Mentors: Siddarth Krishnamoorthy & Soumye Singhal**
 ---
 
 * **Abstract:**  this  project was about learning, exploring and exploiting various security vulnerability in a program.  Project was mostly based on system vulnerabilities under “old-style” Linux system.
