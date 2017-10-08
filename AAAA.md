@@ -2,7 +2,7 @@
 Title: System and Cyber Security
 Date: 27-01-2017 to 15-4-17
 Members: Kamlesh K Biloniya, Divya chauhan, Chaman Agrawal, Kushagra Rajput
-Mentors: Siddarth Krishnamoorthy & Soumye Singhal**
+Mentors: Siddarth Krishnamoorthy & Soumye Singhal
 ---
 
 * **Abstract:**  this  project was about learning, exploring and exploiting various security vulnerability in a program.  Project was mostly based on system vulnerabilities under “old-style” Linux system.
@@ -91,5 +91,4 @@ Mentors: Siddarth Krishnamoorthy & Soumye Singhal**
          3. DOM-based xss attack
 ![](https://github.com/kamleshhello/Ethical-Hacking/blob/master/git9.png)
 
-:simple_smile: :simple_smile: :simple_smile:
 
