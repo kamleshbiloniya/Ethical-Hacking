@@ -46,12 +46,13 @@ Mentors: Siddarth Krishnamoorthy & Soumye Singhal
 * **Buffer overflow**
     * **Buffer:** A  Temporary space in memory used for hold data.
     * **Buffer overflow:** Happens when data written to the buffer is larger then size of buffer and due to insufficient bound checking it overflows and overwrites adjacent memory location.<br />
-    * **Simple Vulnerable Function:**
-        GetInput{
-                  Char buffer[8];
-                  gets(buffer);
-                  puts(buffer);
+    * **Simple Vulnerable Function:**<br />
+        GetInput{ <br />
+                  Char buffer[8];<br />
+                  gets(buffer);<br />
+                  puts(buffer);<br />
 }
+   <br />
             **Gets() does not check if input size is greater than size  of buffer**
 * **Format String Attack:**
     * The Format String exploit occurs when the submitted data of an input string is evaluated as a command by the application. Using format String vulnerability we can read the stack , execute  code .
@@ -89,4 +90,6 @@ Mentors: Siddarth Krishnamoorthy & Soumye Singhal
          2. stored xss attack
          3. DOM-based xss attack
 ![](https://github.com/kamleshhello/Ethical-Hacking/blob/master/git9.png)
+
+:simple_smile: :simple_smile: :simple_smile:
 
