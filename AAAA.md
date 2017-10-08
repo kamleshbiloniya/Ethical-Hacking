@@ -13,4 +13,12 @@ Mentors: Siddarth Krishnamoorthy & Soumye Singhal
      * **Assembly Language**
      * **Buffer overflow attack**
      * **Format string attack** <br />
-     ok let's see
+     
+     * **Linux Basics**
+         **Read, Write & Execute Permissions**
+         Permissions are the basic "rights" to act on a file or directory. The basic rights are read, write and execute.
+         * Read - a readable permission allows the contents of the file to be viewed
+         * Write - a write permission on a file allows you to modify the contents of that file.
+         * Execute - for a file, the executable permission allows to run the file and execute a program.
+         * We can view permissions for file for directory by ls –l command.
+         
