@@ -1,6 +1,6 @@
 ---
-title: "System and Cyber Security"
-date: 2017-01-27 +0530
+Title: "System and Cyber Security"
+Date: 27-01-2017 to 15-4-17
 Members: Kamlesh K Biloniya Divya chauhan Chaman Agrawal Kushagra Rajput
 Mentors: Siddarth Krishnamoorthy & Soumye Singhal
 ---
@@ -14,7 +14,7 @@ Mentors: Siddarth Krishnamoorthy & Soumye Singhal
      * **Buffer overflow attack**
      * **Format string attack** <br />
      
-* **Linux Basics**
+     * **Linux Basics**
          **Read, Write & Execute Permissions** <br />
          Permissions are the basic "rights" to act on a file or directory. The basic rights are read, write and execute.
          * Read - a readable permission allows the contents of the file to be viewed
